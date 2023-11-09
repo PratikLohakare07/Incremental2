@@ -18,10 +18,16 @@ namespace dotnetapp.Controllers
         public IActionResult Index()
         {
             var data=_context.Players.ToList();
-            return View();
+            return View(data);
         }
 
-        public IactionResult 
+        public IActionResult DisplayAllPlayers(int id)
+        {
+            var data=_context.Players.Find(id);
+            return View(data);
+        }
+
+
     }
 }
 
