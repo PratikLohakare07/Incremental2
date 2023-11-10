@@ -8,7 +8,7 @@ namespace dotnetapp.Models
         public int Id{get;set;}
 
 
-        [Required(Error Message:"Name should not be empty")]
+        [Required(ErrorMessage:"Name should not be empty")]
         public string Name{get;set;}
 
         public string Category{get;set;}
