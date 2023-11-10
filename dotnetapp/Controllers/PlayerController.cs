@@ -14,7 +14,8 @@ namespace dotnetapp.Controllers
         {
             _context = context;
         }
-
+        
+        [Route("Index")]
         public IActionResult Index()
         {
             var data=_context.Players.ToList();
@@ -27,7 +28,27 @@ namespace dotnetapp.Controllers
             return View(data);
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        [Route]
+        public IActionResult Create(Player player)
+
+        {
+            if(ModelState.IsValid)
+            {
+
+            
+            var data=_context.Players.Add(player);
+
+            _context.SaveChanges();
+            return RedirectToList("Index");
+            }
+            return View();
+        }
     }
 }
 
