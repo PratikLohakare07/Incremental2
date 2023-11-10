@@ -9,6 +9,7 @@ namespace dotnetapp.Models
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            
         }
 
         public virtual DbSet<Player> Players{get;set;}

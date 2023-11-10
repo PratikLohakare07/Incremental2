@@ -5,7 +5,6 @@ namespace dotnetapp.Models
 
     public class LoginViewModel
     {
-        
     }
 
 }
