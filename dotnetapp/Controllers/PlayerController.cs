@@ -45,7 +45,7 @@ namespace dotnetapp.Controllers
             var data=_context.Players.Add(player);
 
             _context.SaveChanges();
-            return RedirectToList("Index");
+            return RedirectToAction("Index");
             }
             return View();
         }
