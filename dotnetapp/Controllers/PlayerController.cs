@@ -50,27 +50,30 @@ namespace dotnetapp.Controllers
             return View();
         }
 
-        public IActionResult(int id)
+        public IActionResult Edit(int id)
         {
             var data=_context.Players.Find(id);
             return View(data);
         }
 
         [HttpPost]
-        public IActionResult (Player player)
+        public IActionResult Edit (Player player)
         {
-            Player p=_context.Players.Add(player.Id);
+            Player p=_context.Players.Find(player.Id);
             p.Name=player.Name;
             p.BiddingAmount=player.BiddingAmount;
             p.Category=player.Category;
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
-        public IActionResult (int id)
+        public IActionResult Delete (int id)
         {
             if(ModelState.IsValid)
             {
             var data=_context.Players.Find(id);
             _context.Players.Remove(data);
+            _context.SaveChanges();
             return RedirectToAction("Index");
             }
         return View();

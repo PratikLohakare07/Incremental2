@@ -8,12 +8,12 @@ namespace dotnetapp.Models
         public int Id{get;set;}
 
 
-        [Required(ErrorMessage:"Name should not be empty")]
+        [Required(ErrorMessage="Name is required.")]
         public string Name{get;set;}
 
         public string Category{get;set;}
        
-       [Range(0,int.MaxValue)]
+       [Range(0,int.MaxValue,ErrorMessage="not null")]
         public decimal BiddingAmount{get;set;}
 
 
