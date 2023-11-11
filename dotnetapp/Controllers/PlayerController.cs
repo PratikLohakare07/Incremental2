@@ -17,7 +17,7 @@ namespace dotnetapp.Controllers
             _context = context;
         }
         [HttpGet]
-        
+        [Route("1")]
         public IActionResult Index()
         {
             var data=_context.Players.ToList();
@@ -35,6 +35,7 @@ namespace dotnetapp.Controllers
         {
             return View();
         }
+
 
         [HttpPost]
         
@@ -77,15 +78,14 @@ namespace dotnetapp.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeleteConfirmed (Player player)
+        public IActionResult DeleteConfirmed (int id)
         {
             
-            Player p=_context.Players.Find(player.Id);
-            _context.Players.Remove(p);
+            var data=_context.Players.Find(id);
+            _context.Players.Remove(data);
             _context.SaveChanges();
             return RedirectToAction("Index");
-            
-        
+      
         }
     }
 }
