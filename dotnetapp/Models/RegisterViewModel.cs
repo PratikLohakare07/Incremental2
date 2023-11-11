@@ -6,6 +6,8 @@ namespace dotnetapp.Models
 
     public class RegisterViewModel
     {
+
+        
         
     }
 

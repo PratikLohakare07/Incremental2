@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using  System.Collections.Generic;
 
 namespace dotnetapp.Models
 {
@@ -7,8 +8,9 @@ namespace dotnetapp.Models
         [Key]
         public int TeamId{get;set;}
 
-        public Name TeamName{get;set;}
-
+        public string TeamName{get;set;}
         
+        public ICollection<Player> Players{get;set;}
+
     }
 }
