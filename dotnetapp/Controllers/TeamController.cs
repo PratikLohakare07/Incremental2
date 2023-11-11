@@ -4,14 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using dotnetapp.Models;
 
-namespace dotnetapp.Controllers
-{
+namespace dotnetapp.Controllers;
+
     
     public class TeamController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public PlayerController(ApplicationDbContext context)
+        public TeamController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -55,14 +55,14 @@ namespace dotnetapp.Controllers
 
         public IActionResult Edit(int id)
         {
-            var data=_context.Players.Find(id);
+            var data=_context.Teams.Find(id);
             return View(data);
         }
 
         [HttpPost]
         public IActionResult Edit (Team team)
         {
-            Team p=_context.Players.Find(team.TeamId);
+            Team p=_context.Teams.Find(team.TeamId);
             p.TeamName=team.TeamName;
            
             _context.SaveChanges();
@@ -71,7 +71,7 @@ namespace dotnetapp.Controllers
 
         public IActionResult Delete(int id)
         {
-            var data=_context.Players.Find(id);
+            var data=_context.Teams.Find(id);
             return View(data);
         }
 
@@ -79,12 +79,12 @@ namespace dotnetapp.Controllers
         public IActionResult DeleteConfirmed (int id)
         {
             
-            var data=_context.Players.Find(id);
-            _context.Players.Remove(data);
+            var data=_context.Teams.Find(id);
+            _context.Teams.Remove(data);
             _context.SaveChanges();
             return RedirectToAction("List");
       
         }
     }
-}
+
 
