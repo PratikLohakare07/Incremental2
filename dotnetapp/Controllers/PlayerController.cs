@@ -29,7 +29,7 @@ namespace dotnetapp.Controllers
             var data=_context.Players.Find(id);
             return View(data);
         }
-       [HttpGet]
+    //    [HttpGet]
     //    [Route("create")]
         public IActionResult Create()
         {
@@ -46,7 +46,7 @@ namespace dotnetapp.Controllers
             {
 
             
-            var data=_context.Players.Add(player);
+            _context.Players.Add(player);
 
             _context.SaveChanges();
             return RedirectToAction("Index");

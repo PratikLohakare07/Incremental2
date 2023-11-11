@@ -1,33 +1,35 @@
-@model Player
-<h1>Adding Product Data</h1>
+
+
+
+ @model Player
+
+<h2>Adding Department </h2>
 <hr>
-@using(Html.BeginForm())
+@using (Html.BeginForm())
 {
-    <div>
-        <div>
-            @Html.DisplayNameFor(m=>m.Id)
-            @Html.EditorFor(m=>m.Id)
-            @Html.ValidationMessageFor(m=>m.Id)
+    <div class ="form-horizontal">
+        @Html.ValidationSummary(true,"",new{@class="text-danger"})
+        <div class=form-group>
+            @Html.DisplayNameFor(d=>d.Id)
+            @Html.EditorFor(d=>d.Id)
         </div>
-        <div>
-            @Html.DisplayNameFor(m=>m.Name)
-            @Html.EditorFor(m=>m.Name)
-            @Html.ValidationMessageFor(m=>m.Name)
-
+         <div class=form-group>
+            @Html.DisplayNameFor(d=>d.Name)
+            @Html.EditorFor(d=>d.Name)
         </div>
-        <div>
-            @Html.DisplayNameFor(m=>m.Category)
-            @Html.EditorFor(m=>m.Category)
-            @Html.ValidationMessageFor(m=>m.Category)
-
+        <div class=form-group>
+            @Html.DisplayNameFor(d=>d.Category)
+            @Html.EditorFor(d=>d.Category)
         </div>
-        <div>
-            @Html.DisplayNameFor(m=>m.BiddingAmount)
-            @Html.EditorFor(m=>m.BiddingAmount)
-            @Html.ValidationMessageFor(m=>m.BiddingAmount)
-
+        <div class=form-group>
+            @Html.DisplayNameFor(d=>d.BiddingAmount)
+            @Html.EditorFor(d=>d.BiddingAmount)
         </div>
     </div>
     <br>
-    <input type='submit' value='Save'>
+    <br>
+    <input type="submit" value="Save" class="btn btn-default">
+
 }
+<br>
+@Html.ActionLink("Back","Index")
