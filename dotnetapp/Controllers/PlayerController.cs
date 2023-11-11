@@ -6,8 +6,8 @@ using dotnetapp.Models;
 
 namespace dotnetapp.Controllers
 {
-    [ApiController]
-    [Route("[/controller]")]
+    // [ApiController]
+    // [Route("[/controller]")]
     public class PlayerController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -17,7 +17,7 @@ namespace dotnetapp.Controllers
             _context = context;
         }
         [HttpGet]
-        [Route("Index")]
+        // [Route("Index")]
         public IActionResult Index()
         {
             var data=_context.Players.ToList();
@@ -30,7 +30,7 @@ namespace dotnetapp.Controllers
             return View(data);
         }
        [HttpGet]
-       [Route("create")]
+    //    [Route("create")]
         public IActionResult Create()
         {
             return View();
