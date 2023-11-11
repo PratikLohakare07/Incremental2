@@ -41,16 +41,14 @@ namespace dotnetapp.Controllers;
         public IActionResult Create(Team team)
 
         {
-            if(ModelState.IsValid)
-            {
+            
 
             
-            var data=_context.Teams.Add(team);
+            _context.Teams.Add(team);
 
             _context.SaveChanges();
             return RedirectToAction("List");
-            }
-            return View();
+            
         }
 
         public IActionResult Edit(int id)

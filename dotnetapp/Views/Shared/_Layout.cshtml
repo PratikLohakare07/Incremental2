@@ -17,8 +17,10 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-               <button> <div>@Html.ActionLink("Players","Index","Player")</div></button>
-               <button> <div>@Html.ActionLink("AddNewPlayers","Create","Player")</div></button>
+               <button> @Html.ActionLink("Players","Index","Player")</button>&nbsp;&nbsp;&nbsp;
+               <button> @Html.ActionLink("AddNewPlayers","Create","Player")</button>&nbsp;&nbsp;
+               <button> @Html.ActionLink("AddTeam","Create","Team")</button>&nbsp;&nbsp;
+               <button> @Html.ActionLink("Teams","List","Team")</button>&nbsp;&nbsp;
        <br>
        </div>
 

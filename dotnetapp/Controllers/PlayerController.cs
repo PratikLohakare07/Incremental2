@@ -42,16 +42,13 @@ namespace dotnetapp.Controllers
         public IActionResult Create(Player player)
 
         {
-            if(ModelState.IsValid)
-            {
-
+            
             
             _context.Players.Add(player);
 
             _context.SaveChanges();
             return RedirectToAction("Index");
-            }
-            return View();
+           
         }
 
         public IActionResult Edit(int id)

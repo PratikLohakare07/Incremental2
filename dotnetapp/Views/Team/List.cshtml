@@ -1,0 +1,28 @@
+@model IEnumerable<Team>
+
+    <h1>Show Teams</h1>
+
+    <table class='table'>
+
+        <thead>
+            <th>@Html.DisplayNameFor(m=>m.TeamId)</th>
+            <th>@Html.DisplayNameFor(m=>m.TeamName)</th>
+           
+
+        </thead>
+
+        <tbody>
+            <tr>
+
+            
+             @foreach (var item in @Model)
+             {
+                <hr>
+                <td>@item.TeamId</td>
+                <td>@item.TeamName</td>
+                
+             }
+            
+        </tbody>
+
+    </table>
