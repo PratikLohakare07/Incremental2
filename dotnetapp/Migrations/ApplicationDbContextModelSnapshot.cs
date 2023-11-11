@@ -53,17 +53,17 @@ namespace dotnetapp.Migrations
 
             modelBuilder.Entity("dotnetapp.Models.Team", b =>
                 {
-                    b.Property<int>("TeamId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeamId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("TeamName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("TeamId");
+                    b.HasKey("Id");
 
                     b.ToTable("Teams");
                 });

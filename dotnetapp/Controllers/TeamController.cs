@@ -60,7 +60,7 @@ namespace dotnetapp.Controllers;
         [HttpPost]
         public IActionResult Edit (Team team)
         {
-            Team p=_context.Teams.Find(team.TeamId);
+            Team p=_context.Teams.Find(team.Id);
             p.TeamName=team.TeamName;
            
             _context.SaveChanges();

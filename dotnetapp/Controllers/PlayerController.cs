@@ -34,7 +34,7 @@ namespace dotnetapp.Controllers
     //    [Route("create")]
         public IActionResult Create()
         {
-            ViewBag.TeamId=new SelectList(_context.Teams,"TeamId","TeamName");
+            ViewBag.TeamId=new SelectList(_context.Teams,"Id","TeamName");
             return View();
         }
 
@@ -51,7 +51,8 @@ namespace dotnetapp.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
             }
-            ViewBag.TeamId=new SelectList(_context.Teams,"TeamId","TeamName");
+         ViewBag.TeamId=new SelectList(_context.Teams,"Id","TeamName");
+         return View();
         }
 
 

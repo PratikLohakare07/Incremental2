@@ -52,13 +52,13 @@ namespace dotnetapp.Migrations
                 name: "Teams",
                 columns: table => new
                 {
-                    TeamId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TeamName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Teams", x => x.TeamId);
+                    table.PrimaryKey("PK_Teams", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -185,7 +185,7 @@ namespace dotnetapp.Migrations
                         name: "FK_Players_Teams_TeamId",
                         column: x => x.TeamId,
                         principalTable: "Teams",
-                        principalColumn: "TeamId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 

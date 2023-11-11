@@ -17,7 +17,7 @@ namespace dotnetapp.Models
 
         public string Category{get;set;}
 
-        [ForeignKey("Group")]
+        [ForeignKey("Team")]
         
         public int TeamId{get;set;}
        

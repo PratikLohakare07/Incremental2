@@ -6,7 +6,7 @@ namespace dotnetapp.Models
     public class Team
     {
         [Key]
-        public int TeamId{get;set;}
+        public int Id{get;set;}
 
         public string TeamName{get;set;}
         
