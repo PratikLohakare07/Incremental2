@@ -23,6 +23,12 @@ namespace dotnetapp.Controllers;
             return View(data);
         }
 
+        public IActionResult Display(int id)
+        {
+            var data=_context.Players.Where(e=>e.TeamId==id).ToList();
+            _context.SaveChanges();
+            return View(data);
+        }
         public IActionResult DisplayAllPlayers(int id)
         {
             var data=_context.Teams.Find(id);
