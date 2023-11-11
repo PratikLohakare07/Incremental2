@@ -17,7 +17,7 @@ namespace dotnetapp.Controllers
             _context = context;
         }
         [HttpGet]
-        [Route("1")]
+        [Route("Index")]
         public IActionResult Index()
         {
             var data=_context.Players.ToList();
