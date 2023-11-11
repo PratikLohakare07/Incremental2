@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using dotnetapp.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace dotnetapp.Controllers
 {
@@ -33,6 +34,7 @@ namespace dotnetapp.Controllers
     //    [Route("create")]
         public IActionResult Create()
         {
+            ViewBag.TeamId=new SelectList(_context.Teams,"TeamId","TeamName");
             return View();
         }
 
@@ -42,14 +44,16 @@ namespace dotnetapp.Controllers
         public IActionResult Create(Player player)
 
         {
-            
-            
+            if(ModelState.IsValid)
+            {
             _context.Players.Add(player);
 
             _context.SaveChanges();
             return RedirectToAction("Index");
-           
+            }
+            ViewBag.TeamId=new SelectList(_context.Teams,"TeamId","TeamName");
         }
+
 
         public IActionResult Edit(int id)
         {
