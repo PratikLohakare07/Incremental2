@@ -6,6 +6,8 @@ using dotnetapp.Models;
 
 namespace dotnetapp.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class PlayerController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -73,16 +75,16 @@ namespace dotnetapp.Controllers
             return View(data);
         }
 
-        public IActionResult Delete (Player player)
+        [HttpPost]
+        public IActionResult DeleteConfirmed (Player player)
         {
-            if(ModelState.IsValid)
-            {
-            var data=_context.Players.Find(player.Id);
-            _context.Players.Remove(data);
+            
+            Player p=_context.Players.Find(player.Id);
+            _context.Players.Remove(p);
             _context.SaveChanges();
             return RedirectToAction("Index");
-            }
-        return View();
+            
+        
         }
     }
 }
