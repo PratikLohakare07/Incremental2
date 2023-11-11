@@ -13,15 +13,16 @@
         </thead>
 
         <tbody>
-            <tr>
 
             <td>
              @foreach (var item in @Model)
              {
+            <tr>
                 <td>@item.Id</td>
                 <td>@item.Name</td>
                 <td>@item.Category</td>
                 <td>@item.BiddingAmount</td>
+            </tr>
              }
             </td>
         </tbody>

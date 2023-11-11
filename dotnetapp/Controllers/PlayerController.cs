@@ -44,15 +44,14 @@ namespace dotnetapp.Controllers
         public IActionResult Create(Player player)
 
         {
-            if(ModelState.IsValid)
-            {
+            
             _context.Players.Add(player);
 
             _context.SaveChanges();
             return RedirectToAction("Index");
-            }
+            
          ViewBag.TeamId=new SelectList(_context.Teams,"Id","TeamName");
-         return View();
+         
         }
 
 

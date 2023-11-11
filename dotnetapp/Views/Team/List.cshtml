@@ -7,6 +7,7 @@
         <thead>
             <th>@Html.DisplayNameFor(m=>m.Id)</th>
             <th>@Html.DisplayNameFor(m=>m.TeamName)</th>
+            <th>Players</th>
            
 
         </thead>
@@ -20,11 +21,12 @@
                 <tr>
                 <td>@item.Id</td>
                 <td>@item.TeamName</td>
+                <td>@Html.ActionLink("Players","Index","Player")</td>
                 </tr>
              }
              
 
             
         </tbody>
-
+    
     </table>
