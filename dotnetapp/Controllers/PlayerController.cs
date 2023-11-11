@@ -21,7 +21,7 @@ namespace dotnetapp.Controllers
         // [Route("Index")]
         public IActionResult Index()
         {
-            var data=_context.Players.ToList();
+            var data=_context.Players.Where(p=>p.Team.TeamId==).ToList();
             return View(data);
         }
 

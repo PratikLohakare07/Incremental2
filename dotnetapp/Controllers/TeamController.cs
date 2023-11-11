@@ -42,8 +42,6 @@ namespace dotnetapp.Controllers;
 
         {
             
-
-            
             _context.Teams.Add(team);
 
             _context.SaveChanges();
