@@ -13,8 +13,8 @@
           "NUnit": "3.13.3",
           "NUnit.Analyzers": "3.6.1",
           "NUnit3TestAdapter": "4.4.2",
-          "dotnetapp": "1.0.0",
-          "coverlet.collector": "3.2.0"
+          "coverlet.collector": "3.2.0",
+          "dotnetapp": "1.0.0"
         },
         "runtime": {
           "TestProject.dll": {}
