@@ -67,11 +67,17 @@ namespace dotnetapp.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Delete (int id)
+        public IActionResult Delete(int id)
+        {
+            var data=_context.Players.Find(id);
+            return View(data);
+        }
+
+        public IActionResult Delete (Player player)
         {
             if(ModelState.IsValid)
             {
-            var data=_context.Players.Find(id);
+            var data=_context.Players.Find(player.Id);
             _context.Players.Remove(data);
             _context.SaveChanges();
             return RedirectToAction("Index");
