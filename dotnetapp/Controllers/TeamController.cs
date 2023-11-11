@@ -25,8 +25,8 @@ namespace dotnetapp.Controllers;
 
         public IActionResult Display(int id)
         {
-            var data=_context.Players.Where(e=>e.TeamId==id).ToList();
-            _context.SaveChanges();
+            var data=_context.Players.Where(e=>e.TeamId==id);
+            
             return View(data);
         }
         public IActionResult DisplayAllPlayers(int id)
