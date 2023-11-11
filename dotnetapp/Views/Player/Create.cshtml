@@ -1,35 +1,33 @@
-@model Employee
+@model Player
+<h1>Adding Product Data</h1>
+<hr>
+@using(Html.BeginForm())
+{
+    <div>
+        <div>
+            @Html.DisplayNameFor(m=>m.TeamId)
+            @Html.EditorFor(m=>m.Id)
+            @Html.ValidationMessageFor(m=>m.Id)
+        </div>
+        <div>
+            @Html.DisplayNameFor(m=>m.Name)
+            @Html.EditorFor(m=>m.Name)
+            @Html.ValidationMessageFor(m=>m.Name)
 
-<div class="jumbotron">
-    <form method="post">
-        <label asp-for='Name'></label>
-        <input type='text' asp-for='Name'>
-        <span asp-validation-for='Name' style="color:red"></span>
-        <br><br>
-          <label asp-for='Salary'></label>
-        <input type='text' asp-for='Salary'>
-        <span asp-validation-for='Salary' style="color:red"></span>
-        <br><br>
-        <label>Select Department</label>
-        <select asp-for='DeptId' asp-items='ViewBag.DeptId'>
-            <option value=''>Choose Department</option>
-        </select>
-        <br><br>
-         <label asp-for='Email'></label>
-        <input type='text' asp-for='Email'>
-        <span asp-validation-for='Email' style="color:red"></span>
-        <br><br>
-        <label asp-for='Dob'></label>
-        <input type='date' asp-for='Dob'>
-        <span asp-validation-for='Dob' style="color:red"></span>
-        <br><br>
-        <input type='submit' value="Save" class='btn btn-success'> 
-    </form>
-    <a asp-controller='Emp' asp-action="List">Back to List</a>
-    <br><br>
+        </div>
+        <div>
+            @Html.DisplayNameFor(m=>m.Price)
+            @Html.EditorFor(m=>m.Price)
+            @Html.ValidationMessageFor(m=>m.Price)
 
+        </div>
+        <div>
+            @Html.DisplayNameFor(m=>m.Stock)
+            @Html.EditorFor(m=>m.Stock)
+            @Html.ValidationMessageFor(m=>m.Stock)
 
-</div>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+        </div>
+    </div>
+    <br>
+    <input type='submit' value='Save'>
+}
