@@ -21,10 +21,15 @@ namespace dotnetapp.Controllers
         // [Route("Index")]
         public IActionResult Index()
         {
-            var data=_context.Players.Where(p=>p.Team.TeamId==Id).ToList();
+            var data=_context.Players.ToList();
             return View(data);
         }
-
+        
+        public IActionResult Display(int id)
+        {
+            var data=_context.Players.Where(e=>e.TeamId==id);
+            return View(data);
+        }
         public IActionResult DisplayAllPlayers(int id)
         {
             var data=_context.Players.Find(id);
