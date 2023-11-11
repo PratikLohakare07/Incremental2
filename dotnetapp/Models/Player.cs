@@ -13,7 +13,7 @@ namespace dotnetapp.Models
 
         public string Category{get;set;}
        
-       [Range(0,int.MaxValue,ErrorMessage="not null")]
+       [Range(0,int.MaxValue,ErrorMessage="Bidding")]
         public decimal BiddingAmount{get;set;}
 
 
