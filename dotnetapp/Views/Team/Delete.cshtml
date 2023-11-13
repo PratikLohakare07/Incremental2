@@ -1,0 +1,14 @@
+@model Team
+
+<h2>Deleting Team </h2>
+<p>@Html.DisplayNameFor(p=>p.Id) :  @Html.DisplayFor(p=>p.Id)</p>
+<p>@Html.DisplayNameFor(p=>p.TeamName) :  @Html.DisplayFor(p=>p.TeamName)</p>
+
+
+
+<hr>
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete ?" style="background-color:red;">
+}
+@Html.ActionLink("Back to List","List")

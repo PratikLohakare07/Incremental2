@@ -1,0 +1,25 @@
+@model IEnumerable<Player>
+
+<table class='table'>
+    <thead>
+        <th>@Html.DisplayNameFor(e=>e.Id)</th>
+        <th>@Html.DisplayNameFor(e=>e.Name)</th>
+        <th>@Html.DisplayNameFor(e=>e.Category)</th>
+        <th>@Html.DisplayNameFor(e=>e.TeamId)</th>
+        <th>@Html.DisplayNameFor(e=>e.BiddingAmount)</th>
+    </thead>
+    <tbody>
+        @foreach(var data in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(e=>data.Id)</td>
+                <td>@Html.DisplayFor(e=>data.Name)</td>
+                <td>@Html.DisplayFor(e=>data.Category)</td>
+                <td>@Html.DisplayFor(e=>data.TeamId)</td>
+                <td>@Html.DisplayFor(e=>data.BiddingAmount)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br><br>
+<a asp-controller='Home' asp-action='Index'>Home</a>

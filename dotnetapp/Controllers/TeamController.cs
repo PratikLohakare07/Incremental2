@@ -77,7 +77,7 @@ public class TeamController : Controller
     public IActionResult Delete(Team team)
     {
 
-        var data = _context.Teams.Find(team.Id);
+        Team data = _context.Teams.Find(team.Id);
         _context.Teams.Remove(data);
         _context.SaveChanges();
         return RedirectToAction("List");
