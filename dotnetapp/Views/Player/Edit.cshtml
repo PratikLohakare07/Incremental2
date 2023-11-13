@@ -1,0 +1,34 @@
+@model Player
+
+
+<h2>Editing Player</h2>
+
+<form method='post'>
+    <label asp-for="Id"></label>
+    <input type='text' asp-for="Id" readonly>
+    <br>
+    <label asp-for="Name"></label>
+    <input type='text' asp-for="Name">
+    <span asp-validation-for="Name" style="color:red"></span>
+    <br>
+     <br>
+    <label asp-for="Category"></label>
+    <input type='text' asp-for="Category">
+    <span asp-validation-for="Category" style="color:red"></span>
+    <br>
+    <br>
+    <label asp-for="TeamId"></label>
+    <input type='text' asp-for="TeamId">
+    <span asp-validation-for="TeamId" style="color:red"></span>
+    <br>
+    <br>
+    <label asp-for="BiddingAmount"></label>
+    <input type='text' asp-for="BiddingAmount">
+    <span asp-validation-for="BiddingAmount" style="color:red"></span>
+    <br>
+     
+    <input type='submit' value='Save' style="background-color: cyan;">
+</form>
+<br>
+<br>
+<a asp-controller="Player" asp-action="Index">Back To Index</a>

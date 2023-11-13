@@ -1,0 +1,13 @@
+@model Player
+
+<h2>Deleting Player </h2>
+<p>@Html.DisplayNameFor(p=>p.Id) :  @Html.DisplayFor(p=>p.Id)</p>
+<p>@Html.DisplayNameFor(p=>p.Name) :  @Html.DisplayFor(p=>p.DeptName)</p>
+<p>@Html.DisplayNameFor(p=>p.Location) :  @Html.DisplayFor(p=>p.Location)</p>
+
+<hr>
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete ?" style="background-color:red;">
+}
+@Html.ActionLink("Back to List","List")

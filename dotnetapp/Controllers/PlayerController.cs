@@ -21,73 +21,73 @@ namespace dotnetapp.Controllers
         // [Route("Index")]
         public IActionResult Index()
         {
-            var data=_context.Players.ToList();
+            var data = _context.Players.ToList();
             return View(data);
         }
-        
-        
+
+
         public IActionResult DisplayAllPlayers(int id)
         {
-            var data=_context.Players.Find(id);
+            var data = _context.Players.Find(id);
             return View(data);
         }
-    //    [HttpGet]
-    //    [Route("create")]
+        //    [HttpGet]
+        //    [Route("create")]
         public IActionResult Create()
         {
-            ViewBag.TeamId=new SelectList(_context.Teams,"Id","TeamName");
+            ViewBag.TeamId = new SelectList(_context.Teams, "Id", "TeamName");
             return View();
         }
 
 
         [HttpPost]
-        
+
         public IActionResult Create(Player player)
 
         {
-            
+
             _context.Players.Add(player);
 
             _context.SaveChanges();
             return RedirectToAction("Index");
-            
-         ViewBag.TeamId=new SelectList(_context.Teams,"Id","TeamName");
-         
+
+            ViewBag.TeamId = new SelectList(_context.Teams, "Id", "TeamName");
+
         }
 
 
         public IActionResult Edit(int id)
         {
-            var data=_context.Players.Find(id);
+            var data = _context.Players.Find(id);
             return View(data);
         }
 
         [HttpPost]
-        public IActionResult Edit (Player player)
+        public IActionResult Edit(Player player)
         {
-            Player p=_context.Players.Find(player.Id);
-            p.Name=player.Name;
-            p.BiddingAmount=player.BiddingAmount;
-            p.Category=player.Category;
+            Player p = _context.Players.Find(player.Id);
+            p.Name = player.Name;
+            p.BiddingAmount = player.BiddingAmount;
+            p.Category = player.Category;
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id)
         {
-            var data=_context.Players.Find(id);
+            var data = _context.Players.Find(id);
             return View(data);
         }
 
         [HttpPost]
-        public IActionResult DeleteConfirmed (int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            
-            var data=_context.Players.Find(id);
+
+            var data = _context.Players.Find(id);
             _context.Players.Remove(data);
             _context.SaveChanges();
             return RedirectToAction("Index");
-      
+
         }
     }
 }

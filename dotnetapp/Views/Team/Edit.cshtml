@@ -1,0 +1,20 @@
+@model Team
+
+
+<h2>Editing Player</h2>
+
+<form method='post'>
+    <label asp-for="Id"></label>
+    <input type='text' asp-for="Id" >
+    <br>
+    <label asp-for="TeamName"></label>
+    <input type='text' asp-for="TeamName">
+    <span asp-validation-for="TeamName" style="color:red"></span>
+    <br>
+    
+     
+    <input type='submit' value='Save' style="background-color: cyan;">
+</form>
+<br>
+<br>
+<a asp-controller="Team" asp-action="List">Back To List</a>

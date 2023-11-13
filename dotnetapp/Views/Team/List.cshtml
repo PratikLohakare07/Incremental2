@@ -8,20 +8,20 @@
             <th>@Html.DisplayNameFor(m=>m.Id)</th>
             <th>@Html.DisplayNameFor(m=>m.TeamName)</th>
             <th>Players</th>
-           
-
+            <th>Edit</th>
         </thead>
 
         <tbody>
-            
-
-            
+             
              @foreach (var item in @Model)
              {
                 <tr>
                 <td>@item.Id</td>
                 <td>@item.TeamName</td>
                 <td>@Html.ActionLink("Players","Display","Team")</td>
+                <td>@Html.ActionLink("Edit","Edit","Team")</td>
+
+
                 
 
                 </tr>

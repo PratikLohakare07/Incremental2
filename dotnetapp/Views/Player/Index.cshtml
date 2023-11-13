@@ -9,8 +9,11 @@
             <th>@Html.DisplayNameFor(m=>m.Name)</th>
             <th>@Html.DisplayNameFor(m=>m.Category)</th>
             <th>@Html.DisplayNameFor(m=>m.TeamId)</th>
-
             <th>@Html.DisplayNameFor(m=>m.BiddingAmount)</th>
+            <th>Edit</th>
+            <th>Display</th>
+            <th>Delete</th>
+
 
         </thead>
 
@@ -24,8 +27,11 @@
                 <td>@item.Name</td>
                 <td>@item.Category</td>
                 <td>@item.TeamId</td>
-
                 <td>@item.BiddingAmount</td>
+                <td>@Html.ActionLink("Edit","Edit","Player")</td>
+                <td>@Html.ActionLink("Display","Display","Player")</td>
+                <td>@Html.ActionLink("Delete","Delete","Player")</td>
+
             </tr>
              }
             </td>
