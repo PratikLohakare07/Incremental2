@@ -62,6 +62,7 @@ public class TeamController : Controller
     {
         Team p = _context.Teams.Find(team.Id);
         p.TeamName = team.TeamName;
+        _context.Teams.Add(team);
 
         _context.SaveChanges();
         return RedirectToAction("List");

@@ -65,13 +65,18 @@ namespace dotnetapp.Controllers
         [HttpPost]
         public IActionResult Edit(Player player)
         {
-            Player p = _context.Players.Find(player.Id);
-            p.Name = player.Name;
-            p.Category = player.Category;
-            p.BiddingAmount = player.BiddingAmount;
+            if(ModelState.IsValid)
+            {
+
+            Player data = _context.Players.Find(player.Id);
+            data.Name = player.Name;
+            data.Category = player.Category;
+            data.BiddingAmount = player.BiddingAmount;
             _context.Players.Add(player);
             _context.SaveChanges();
             return RedirectToAction("Index");
+            }
+            return View();
         }
 
         public IActionResult Delete(int id)
