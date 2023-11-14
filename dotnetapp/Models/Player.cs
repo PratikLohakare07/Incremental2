@@ -9,20 +9,20 @@ namespace dotnetapp.Models
     {
         [Key]
         
-        public int Id{get;set;}
+        public int? Id{get;set;}
 
 
         [Required(ErrorMessage="Name is required.")]
-        public string Name{get;set;}
+        public string? Name{get;set;}
 
-        public string Category{get;set;}
+        public string? Category{get;set;}
 
         [ForeignKey("Team")]
         
-        public int TeamId{get;set;}
+        public int? TeamId{get;set;}
        
        [Range(1,int.MaxValue,ErrorMessage="Bidding amount must be greater than 0.")]
-        public decimal BiddingAmount{get;set;}
+        public decimal? BiddingAmount{get;set;}
 
         public Team Teams{get;set;}
 

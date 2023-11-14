@@ -67,8 +67,9 @@ namespace dotnetapp.Controllers
         {
             Player p = _context.Players.Find(player.Id);
             p.Name = player.Name;
-            p.BiddingAmount = player.BiddingAmount;
             p.Category = player.Category;
+            p.BiddingAmount = player.BiddingAmount;
+            _context.Players.Add(player);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
