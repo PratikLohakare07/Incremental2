@@ -78,6 +78,15 @@ namespace dotnetapp.Controllers
             var data = _context.Players.Find(id);
             return View(data);
         }
+        [HttpPost]
+        public IActionResult Delete(Player player)
+        {
+            Player p=_context.Players.Find(player.Id);
+            _context.Players.Remove(p);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
 
         [HttpPost]
         public IActionResult DeleteConfirmed(int id)
