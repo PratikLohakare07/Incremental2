@@ -10,6 +10,7 @@ namespace dotnetapp.Models
 
         public string TeamName{get;set;}
         
+        
         public ICollection<Player> Players{get;set;}
 
     }
