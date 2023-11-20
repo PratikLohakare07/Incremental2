@@ -32,7 +32,8 @@ namespace dotnetapp.Controllers
             // }
             // return View();
         }
-        [Route("")]
+        [Route("index")]
+        [HttpGet]
         public IActionResult Index(){
             
             var data=context.Players.ToList();
@@ -40,12 +41,12 @@ namespace dotnetapp.Controllers
         }
         
         
-      
+      [HttpGet]
         public IActionResult Edit(int id){
             var data=context.Players.Find(id);
             return View(data);
         }
-        [HttpPost("edit")]
+        [HttpPost]
         public IActionResult Edit(Player p){
            // if(ModelState.IsValid)
            {
@@ -64,14 +65,14 @@ namespace dotnetapp.Controllers
         public IActionResult Delete(int id){
             return View();
         }
-        [HttpPost("delete")]
+        [HttpDelete("")]
         public IActionResult Delete(Player p){
             var data=context.Players.Find(p.Id);
             context.Players.Remove(data);
             context.SaveChanges();
             return RedirectToAction("Index");
         }
-        [HttpPost("delete/id")]
+        [HttpDelete("{{id}}")]
          public IActionResult DeleteConfirmed(int id){
             var data=context.Players.Find(id);
             context.Players.Remove(data);
