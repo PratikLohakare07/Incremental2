@@ -55,54 +55,48 @@ namespace dotnetapp.Controllers
 
         }
 
-
-        public IActionResult Edit(int id)
-        {
-            var data = _context.Players.Find(id);
+  
+        public IActionResult Edit(int id){
+            var data=_context.Players.Find(id);
             return View(data);
         }
-
         [HttpPost]
-        public IActionResult Edit(Player player)
-        {
-            if(ModelState.IsValid)
-            {
+        public IActionResult Edit(Player p){
+           // if(ModelState.IsValid)
+           {
+                Player pl = new Player(); // Initialize the pl object
 
-            Player data = _context.Players.Find(player.Id);
-            data.Name = player.Name;
-            data.Category = player.Category;
-            data.BiddingAmount = player.BiddingAmount;
-            _context.Players.Add(player);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
+        
+        if (p != null)
+        {
+               pl.Name = p.Name;
+                Player pl=_context.Players.Find(p.Id);
+                pl.Name=p.Name;
+                
+                pl.Category=p.Category;
+                pl.BiddingAmount=p.BiddingAmount;
+                _context.SaveChanges();
+                               
+                return RedirectToAction("Index");
             }
+           return View();
+        }
+        public IActionResult Delete(int id){
             return View();
         }
-
-        public IActionResult Delete(int id)
-        {
-            var data = _context.Players.Find(id);
-            return View(data);
-        }
         [HttpPost]
-        public IActionResult Delete(Player player)
-        {
-            Player p=_context.Players.Find(player.Id);
-            _context.Players.Remove(p);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
-
-        }
-
-        [HttpPost]
-        public IActionResult DeleteConfirmed(int id)
-        {
-
-            var data = _context.Players.Find(id);
+        public IActionResult Delete(Player p){
+            var data=_context.Players.Find(p.Id);
             _context.Players.Remove(data);
             _context.SaveChanges();
             return RedirectToAction("Index");
-
+        }
+        [HttpPost]
+         public IActionResult DeleteConfirmed(int id){
+            var data=_context.Players.Find(id);
+            _context.Players.Remove(data);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
