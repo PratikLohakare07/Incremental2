@@ -1,103 +1,85 @@
-﻿using System;
+﻿﻿using System;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using dotnetapp.Models;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace dotnetapp.Controllers
 {
-    // [ApiController]
-    // [Route("[/controller]")]
+    
+    [Route("/[controller]")]
     public class PlayerController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext context;
 
-        public PlayerController(ApplicationDbContext context)
+        public PlayerController(ApplicationDbContext _context)
         {
-            _context = context;
+            context = _context;
         }
-        [HttpGet]
-        // [Route("Index")]
-        public IActionResult Index()
-        {
-            var data = _context.Players.ToList();
-            return View(data);
+        [Route("create")]
+        public IActionResult Create(){
+
+            return  View();
         }
-
-
-        public IActionResult DisplayAllPlayers(int id)
-        {
-            var data = _context.Players.Find(id);
-            return View(data);
-        }
-        //    [HttpGet]
-        //    [Route("create")]
-        public IActionResult Create()
-        {
-            ViewBag.TeamId = new SelectList(_context.Teams, "Id", "TeamName");
-            return View();
-        }
-
-
+        
         [HttpPost]
-
-        public IActionResult Create(Player player)
-
-        {
-
-            _context.Players.Add(player);
-
-            _context.SaveChanges();
-            return RedirectToAction("Index");
-
-            ViewBag.TeamId = new SelectList(_context.Teams, "Id", "TeamName");
-
+        public IActionResult Create(Player p){
+            // if(ModelState.IsValid){
+            
+                context.Players.Add(p);
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            // }
+            // return View();
         }
-
-  
+        [Route("")]
+        public IActionResult Index(){
+            
+            var data=context.Players.ToList();
+            return View(data);
+        }
+        
+        
+      
         public IActionResult Edit(int id){
-            var data=_context.Players.Find(id);
+            var data=context.Players.Find(id);
             return View(data);
         }
-        [HttpPost]
+        [HttpPost("edit")]
         public IActionResult Edit(Player p){
            // if(ModelState.IsValid)
            {
-                Player pl = new Player(); // Initialize the pl object
-
-        
-        if (p != null)
-        {
-               pl.Name = p.Name;
-                Player pl=_context.Players.Find(p.Id);
-                pl.Name=p.Name;
                 
+                Player pl=context.Players.Find(p.Id);
+                pl.Name=p.Name;
+               
                 pl.Category=p.Category;
                 pl.BiddingAmount=p.BiddingAmount;
-                _context.SaveChanges();
+                context.SaveChanges();
                                
                 return RedirectToAction("Index");
             }
-           return View();
+           // return View();
         }
         public IActionResult Delete(int id){
             return View();
         }
-        [HttpPost]
+        [HttpPost("delete")]
         public IActionResult Delete(Player p){
-            var data=_context.Players.Find(p.Id);
-            _context.Players.Remove(data);
-            _context.SaveChanges();
+            var data=context.Players.Find(p.Id);
+            context.Players.Remove(data);
+            context.SaveChanges();
             return RedirectToAction("Index");
         }
-        [HttpPost]
+        [HttpPost("delete/id")]
          public IActionResult DeleteConfirmed(int id){
-            var data=_context.Players.Find(id);
-            _context.Players.Remove(data);
-            _context.SaveChanges();
+            var data=context.Players.Find(id);
+            context.Players.Remove(data);
+            context.SaveChanges();
             return RedirectToAction("Index");
         }
+        // public IActionResult DisplayAllPlayers(){
+            
+        // }
     }
 }
-
