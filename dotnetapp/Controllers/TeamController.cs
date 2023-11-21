@@ -21,18 +21,22 @@ namespace dotnetapp.Controllers
             var data=context.Teams.ToList();
             return View(data);
         }
-       
-        public IActionResult Add()
+
+        public IActionResult Create()
         {
             return View();
         }
+
+
         [HttpPost]
  
-        public IActionResult Add(Team t)
+        public IActionResult Create(Team t)
         {
+           
             context.Teams.Add(t);
             context.SaveChanges();
             return RedirectToAction("List");
+            
         }
          public IActionResult Delete()
         {
@@ -44,7 +48,7 @@ namespace dotnetapp.Controllers
             var data=context.Teams.Find(t.Id);
             context.Teams.Remove(data);
             context.SaveChanges();
-            return RedirectToAction();
+            return RedirectToAction("List");
         }
  
  

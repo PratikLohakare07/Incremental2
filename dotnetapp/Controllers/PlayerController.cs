@@ -29,7 +29,7 @@ namespace dotnetapp.Controllers
         [Route("create")]
        public IActionResult Create()
 {
-    ViewBag. = new SelectList(context.Teams, "TeamId", "TeamName");
+    ViewBag.TeamId = new SelectList(context.Teams, "Id", "TeamName");
     return View();
 }
 
@@ -49,8 +49,8 @@ public IActionResult Create(Player p)
             return BadRequest(ex.InnerException.Message);
         }
     }
-    ViewBag.TeamList = new SelectList(context.Teams, "TeamId", "TeamName", p.TeamId);
-    return View(p);
+    ViewBag.TeamId = new SelectList(context.Teams, "Id", "TeamName");
+   
 }
        
      
