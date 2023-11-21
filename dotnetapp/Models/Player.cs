@@ -19,7 +19,7 @@ namespace dotnetapp.Models
 
         [ForeignKey("Team")]
         
-        public int? TeamId{get;set;}
+        public int TeamId{get;set;}
        
        [Range(1,int.MaxValue,ErrorMessage="Bidding amount must be greater than 0.")]
         public decimal BiddingAmount{get;set;}

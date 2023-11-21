@@ -26,30 +26,31 @@ namespace dotnetapp.Controllers
             return View(data);
         }
         
-        [Route("create")]
+        // [Route("create")]
        public IActionResult Create()
 {
-    ViewBag.TeamId = new SelectList(context.Teams, "Id", "TeamName");
+    ViewBag.TeamId = new SelectList(context.Teams, "Id","TeamName");
     return View();
 }
 
 [HttpPost]
 public IActionResult Create(Player p)
 {
-    if (ModelState.IsValid)
-    {
-        try
-        {
+    // if (ModelState.IsValid)
+    // {
+    //     try
+    //     {
             context.Players.Add(p);
             context.SaveChanges();
             return RedirectToAction("Index");
-        }
-        catch (System.Exception ex)
-        {
-            return BadRequest(ex.InnerException.Message);
-        }
-    }
-    ViewBag.TeamId = new SelectList(context.Teams, "Id", "TeamName");
+            ViewBag.TeamId = new SelectList(context.Teams,"Id","TeamName");
+        // }
+        // catch (System.Exception ex)
+        // {
+        //     return BadRequest(ex.InnerException.Message);
+        // }
+    // }
+    // return View();
    
 }
        
@@ -60,7 +61,7 @@ public IActionResult Create(Player p)
          }
         [HttpPut]
         public IActionResult Edit(Player p){
-           {
+           
                
                 Player pl=context.Players.Find(p.Id);
                 pl.Name=p.Name;
@@ -70,7 +71,7 @@ public IActionResult Create(Player p)
                 context.SaveChanges();
                                
                 return RedirectToAction("Index");
-            }
+            
            // return View();
         }
         public IActionResult Delete(int id){
