@@ -14,10 +14,10 @@
             @Html.DisplayNameFor(d=>d.Name)
             @Html.EditorFor(d=>d.Name)
         </div>
-        <label>Select Team</label>
-        <select asp-for='TeamId' asp-items='ViewBag.TeamId'>
-            <option value=''>Choose Team</option>
-        </select>
+       <label>Select Team</label>
+<select asp-for="TeamId" asp-items="@ViewBag.TeamList">
+    <option value="">Choose Team</option>
+</select>
         <br><br>
         <div class=form-group>
             @Html.DisplayNameFor(d=>d.Category)

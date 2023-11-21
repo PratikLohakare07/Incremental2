@@ -4,7 +4,8 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using dotnetapp.Models;
- 
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 namespace dotnetapp.Controllers
 {
    
@@ -24,33 +25,33 @@ namespace dotnetapp.Controllers
             var data=context.Players.ToList();
             return View(data);
         }
-       
-         public IActionResult Create(){
- 
-             return  View();
-         }
-       
-        [HttpPost]
+        
         [Route("create")]
-        public IActionResult Create(Player p)
+       public IActionResult Create()
+{
+    ViewBag. = new SelectList(context.Teams, "TeamId", "TeamName");
+    return View();
+}
+
+[HttpPost]
+public IActionResult Create(Player p)
+{
+    if (ModelState.IsValid)
+    {
+        try
         {
-           if(ModelState.IsValid)
-           {
- 
-            try
-            {
- 
-                context.Players.Add(p);
-                context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            catch(System.Exception ex)
-            {
-                return BadRequest(ex.InnerException.Message);
-            }
-           }
-           return Ok();
+            context.Players.Add(p);
+            context.SaveChanges();
+            return RedirectToAction("Index");
         }
+        catch (System.Exception ex)
+        {
+            return BadRequest(ex.InnerException.Message);
+        }
+    }
+    ViewBag.TeamList = new SelectList(context.Teams, "TeamId", "TeamName", p.TeamId);
+    return View(p);
+}
        
      
          public IActionResult Edit(int id){
