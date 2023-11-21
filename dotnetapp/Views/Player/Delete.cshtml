@@ -1,16 +1,9 @@
+
+
 @model Player
-
-<h2>Deleting Player </h2>
-<p>@Html.DisplayNameFor(p=>p.Id) :  @Html.DisplayFor(p=>p.Id)</p>
-<p>@Html.DisplayNameFor(p=>p.Name) :  @Html.DisplayFor(p=>p.Name)</p>
-<p>@Html.DisplayNameFor(p=>p.Category) :  @Html.DisplayFor(p=>p.Category)</p>
-
-<p>@Html.DisplayNameFor(p=>p.BiddingAmount) :  @Html.DisplayFor(p=>p.BiddingAmount)</p>
-
-
-<hr>
-@using (Html.BeginForm())
-{
-    <input type="submit" value="Delete " style="background-color:red;">
+<h1>Deleting Player</h1>
+@using (Html.BeginForm()){
+<p>@Html.DisplayNameFor(p=>p.Id) : @Html.EditorFor(p=>p.Id)</p>
+    <input type='submit' value='Delete'>
 }
 @Html.ActionLink("Back to Index","Index")

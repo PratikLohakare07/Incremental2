@@ -1,56 +1,66 @@
-﻿﻿using System;
+﻿﻿
+using System;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using dotnetapp.Models;
-
+ 
 namespace dotnetapp.Controllers
 {
-    
-    [Route("/[controller]")]
+   
+//    [Route("/[controller]")]
     public class PlayerController : Controller
     {
         private readonly ApplicationDbContext context;
-
+ 
         public PlayerController(ApplicationDbContext _context)
         {
             context = _context;
         }
-        [Route("create")]
-        public IActionResult Create(){
-
-            return  View();
-        }
-        
-        [HttpPost]
-        public IActionResult Create(Player p){
-            // if(ModelState.IsValid){
-            
-                context.Players.Add(p);
-                context.SaveChanges();
-                return RedirectToAction("Index");
-            // }
-            // return View();
-        }
-        [Route("index")]
-        [HttpGet]
+ 
+      //  [Route("")]
         public IActionResult Index(){
-            
+           
             var data=context.Players.ToList();
             return View(data);
         }
-        
-        
-      [HttpGet]
-        public IActionResult Edit(int id){
-            var data=context.Players.Find(id);
-            return View(data);
-        }
+       
+         public IActionResult Create(){
+ 
+             return  View();
+         }
+       
         [HttpPost]
-        public IActionResult Edit(Player p){
-           // if(ModelState.IsValid)
+ 
+        public IActionResult Create(Player p)
+        {
+           if(ModelState.IsValid)
            {
-                
+ 
+            try
+            {
+ 
+                context.Players.Add(p);
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch(System.Exception ex)
+            {
+                return BadRequest(ex.InnerException.Message);
+            }
+           }
+           return Ok();
+        }
+       
+     
+         public IActionResult Edit(int id){
+             var data=context.Players.Find(id);
+             return View(data);
+         }
+        [HttpPut]
+        public IActionResult Edit(Player p){
+           {
+               
                 Player pl=context.Players.Find(p.Id);
                 pl.Name=p.Name;
                
@@ -65,14 +75,14 @@ namespace dotnetapp.Controllers
         public IActionResult Delete(int id){
             return View();
         }
-        [HttpDelete("")]
+        [HttpPost]
         public IActionResult Delete(Player p){
             var data=context.Players.Find(p.Id);
             context.Players.Remove(data);
             context.SaveChanges();
             return RedirectToAction("Index");
         }
-        [HttpDelete("{{id}}")]
+        [HttpPost]
          public IActionResult DeleteConfirmed(int id){
             var data=context.Players.Find(id);
             context.Players.Remove(data);
@@ -80,7 +90,7 @@ namespace dotnetapp.Controllers
             return RedirectToAction("Index");
         }
         // public IActionResult DisplayAllPlayers(){
-            
+           
         // }
     }
 }
