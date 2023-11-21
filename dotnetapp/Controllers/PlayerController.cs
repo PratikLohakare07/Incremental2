@@ -18,7 +18,7 @@ namespace dotnetapp.Controllers
             context = _context;
         }
  
-      //  [Route("")]
+       [Route("")]
         public IActionResult Index(){
            
             var data=context.Players.ToList();
@@ -31,7 +31,7 @@ namespace dotnetapp.Controllers
          }
        
         [HttpPost]
- 
+        [Route("create")]
         public IActionResult Create(Player p)
         {
            if(ModelState.IsValid)
